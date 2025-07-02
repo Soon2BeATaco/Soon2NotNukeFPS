@@ -57,10 +57,6 @@ loom {
     }
 }
 
-<<<<<<< HEAD
-sourceSets.main {
-    output.setResourcesDir(sourceSets.main.flatMap { it.java.classesDirectory })
-=======
 tasks.compileJava {
     dependsOn(tasks.processResources)
 }
@@ -69,7 +65,6 @@ sourceSets.main {
     output.setResourcesDir(sourceSets.main.flatMap { it.java.classesDirectory })
     java.srcDir(layout.projectDirectory.dir("src/main/kotlin"))
     kotlin.destinationDirectory.set(java.destinationDirectory)
->>>>>>> kotlin
 }
 
 // Dependencies:
@@ -90,11 +85,8 @@ dependencies {
     mappings("de.oceanlabs.mcp:mcp_stable:22-1.8.9")
     forge("net.minecraftforge:forge:1.8.9-11.15.1.2318-1.8.9")
 
-<<<<<<< HEAD
-=======
     shadowImpl(kotlin("stdlib-jdk8"))
 
->>>>>>> kotlin
     // If you don't want mixins, remove these lines
     shadowImpl("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
         isTransitive = false
