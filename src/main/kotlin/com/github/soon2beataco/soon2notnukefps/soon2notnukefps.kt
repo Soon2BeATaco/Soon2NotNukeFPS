@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraft.client.renderer.GlStateManager
 
 @Mod(modid = "soonnotnukefps", useMetadata = true)
-class ExampleMod {
+class soon2notnukefps {
     @Mod.EventHandler
     fun init(event: FMLInitializationEvent) {
         try {
