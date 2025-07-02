@@ -71,6 +71,7 @@ sourceSets.main {
 
 repositories {
     mavenCentral()
+    maven("https://jitpack.io/")
     maven("https://repo.spongepowered.org/maven/")
     // If you don't want to log in with your real minecraft account, remove this line
     maven("https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1")
@@ -84,7 +85,8 @@ dependencies {
     minecraft("com.mojang:minecraft:1.8.9")
     mappings("de.oceanlabs.mcp:mcp_stable:22-1.8.9")
     forge("net.minecraftforge:forge:1.8.9-11.15.1.2318-1.8.9")
-
+    implementation("com.github.Stivais:Commodore:bea320fe0a")
+    implementation("com.mojang:brigadier:1.2.9")
     shadowImpl(kotlin("stdlib-jdk8"))
 
     // If you don't want mixins, remove these lines
