@@ -7,7 +7,15 @@ import com.github.stivais.commodore.utils.findCorrespondingNode
 import com.github.stivais.commodore.utils.getArgumentsRequired
 import com.github.stivais.commodore.utils.getRootNode
 import com.github.soon2beataco.soon2notnukefps.utils.ChatUtils
-import com.github.soon2beataco.soon2notnukefps.commands.impl.devCommand
+import com.github.soon2beataco.soon2notnukefps.commands.impl.*
+
+/**
+ * Contains [Commodore] commands to register when the mod is initialized.
+ *
+ * Code by Odin under BSD 3.0
+ *
+ * @author Stivias
+ */
 
 object CommandManager {
     private val commands: ArrayList<Commodore> = arrayListOf(
@@ -40,8 +48,11 @@ object CommandManager {
                 is LiteralNode -> buildTreeString(node, builder)
                 is Executable -> {
                     builder.append("  /${getArgumentsRequired(from).joinToString(" ")}")
+                    for (parser in node.parsers) {
+                        builder.append(" <${parser.name()}${if (parser.optional()) "?" else ""}>")
+                    }
                     builder.append("\n")
-                } // todo: fix.
+                }
             }
         }
     }

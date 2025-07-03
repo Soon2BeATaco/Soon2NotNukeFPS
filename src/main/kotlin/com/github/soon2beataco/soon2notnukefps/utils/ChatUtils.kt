@@ -10,13 +10,13 @@ object ChatUtils {
         if (dev) {
             val ign = mc.thePlayer?.name
             if (ign == "Soon2BeATaco_" || ign == "catgirloblong") { // ill add devmode in config later when there is a config
-                val chatComponent = ChatComponentText("§8[§b§lTacoDev§r§8] $message")
+                val chatComponent = ChatComponentText("§8[§b§lTacoDev§r§8] §r$message")
                 mc.thePlayer?.addChatMessage(chatComponent)
             } else {
                 return
             }
         } else {
-            val chatComponent = ChatComponentText("§8[§b§ltaco§r§8] $message")
+            val chatComponent = ChatComponentText("§8[§b§ltaco§r§8] §r$message")
             mc.thePlayer?.addChatMessage(chatComponent)
         }
     }

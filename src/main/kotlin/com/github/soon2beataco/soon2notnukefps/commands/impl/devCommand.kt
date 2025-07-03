@@ -8,8 +8,4 @@ val devCommand = Commodore("tacodev") {
         ChatUtils.modMessage("test message from /tacodev testMessage, shouldnt be dev message.")
         ChatUtils.modMessage("test message from /tacodev testMessage, should be dev message.", true)
     }
-    literal("sendMessageTest").runs {
-        ChatUtils.sendMessage("test")
-        ChatUtils.runCommand("say test")
-    }
 }
