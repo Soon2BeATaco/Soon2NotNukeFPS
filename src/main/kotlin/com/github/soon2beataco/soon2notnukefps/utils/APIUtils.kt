@@ -26,7 +26,7 @@ object APIUtils {
                 connection = url.openConnection() as HttpURLConnection
                 connection.requestMethod = "GET"
                 connection.setRequestProperty("Accept", "application/json")
-                connection.setRequestProperty("User-Agent", "Mozilla/5.0") // todo: stop this shit from being suspend so i dont have to use fucking coroutines on every instance
+                connection.setRequestProperty("User-Agent", "Mozilla/5.0") // TODO: Refactor this to a non-suspend version or wrap coroutine calls internally to avoid needing suspend everywhere.
                 connection.connectTimeout = 5000
                 connection.readTimeout = 5000
 
@@ -45,9 +45,10 @@ object APIUtils {
             }
         }
     }
-    suspend fun getUUID(ign: String = mc.thePlayer?.name ?: return): String? {
+    suspend fun getUUID(ign: String = mc.thePlayer.name): String? {
         val json = request("https://api.mojang.com/users/profiles/minecraft/$ign", false)
         return json?.let {
             JSONObject(it).getString("id")
         }
+    }
 }
