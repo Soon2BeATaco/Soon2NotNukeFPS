@@ -89,6 +89,7 @@ dependencies {
     implementation("com.mojang:brigadier:1.2.9")
     shadowImpl(kotlin("stdlib-jdk8"))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.json:json:20250517")
 
     // If you don't want mixins, remove these lines
     shadowImpl("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
