@@ -1,14 +1,14 @@
 [
   {
     "modid": "${modid}",
-    "name": "Xample Mod",
-    "description": "A mod that is used as an example.",
+    "name": "Soon2NotNukeFPS",
+    "description": "idk yet",
     "version": "${version}",
     "mcversion": "${mcversion}",
-    "url": "https://github.com/romangraef/Forge1.8.9Template/",
-    "updateUrl": "",
+    "url": "https://github.com/Soon2BeATaco/Soon2NotNukeFPS",
+    "updateUrl": "https://github.com/Soon2BeATaco/Soon2NotNukeFPS",
     "authorList": [
-      "You"
+      "oblongboot", "Soon2BeATaco
     ],
     "credits": "",
     "logoFile": "",

@@ -2,17 +2,31 @@ package com.github.soon2beataco.soon2notnukefps.utils
 
 import com.github.soon2beataco.soon2notnukefps.utils.ChatUtils.modMessage
 import com.github.soon2beataco.soon2notnukefps.utils.GeneralUtils.mc
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.Serializable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.net.HttpURLConnection
 import java.net.URL
-import org.json.JSONObject
+
+val jsonParserr = Json {
+    ignoreUnknownKeys = true;
+    isLenient = true
+}
+
+
+@Serializable
+data class MojangProfile(
+    val id: String,
+    val name: String
+)
 
 object APIUtils {
     private const val baseUrl = "https://tacoaddons.tacoskyblockapi.workers.dev/"
 
     /*
-    * API request util, usage: val response = APIUtils.request("cata?username=Soon2BeAtaco_")
+    * API request util, usage: val response = APIUtils.request("cata?username=Soon2BeATaco_")
     *
     * @param endpoint the specific API endpoint to request, e.g., "cata?username=username".
     * @returns the response body as a String or null if the request fails.
@@ -46,9 +60,14 @@ object APIUtils {
         }
     }
     suspend fun getUUID(ign: String = mc.thePlayer.name): String? {
-        val json = request("https://api.mojang.com/users/profiles/minecraft/$ign", false)
-        return json?.let {
-            JSONObject(it).getString("id")
+        val json = request("https://api.mojang.com/users/profiles/minecraft/$ign", false) ?: return null
+
+        return try {
+            val profile = jsonParserr.decodeFromString<MojangProfile>(json)
+            profile.id
+        } catch (e: Exception) {
+            modMessage("Error parsing JSON: ${e.message}")
+            null
         }
     }
 }

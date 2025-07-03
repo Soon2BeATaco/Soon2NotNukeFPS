@@ -23,4 +23,14 @@ val devCommand = Commodore("tacodev") {
             }
         }
     }
+    literal("getuuid").runs {
+        CoroutineScope(Dispatchers.IO).launch {
+            val uuid = APIUtils.getUUID()
+            if (uuid != null) {
+                ChatUtils.modMessage("uuid api returned : '$uuid'")
+            } else {
+                ChatUtils.modMessage("wow it seems mojang no work rn!!!")
+            }
+        }
+    }
 }
