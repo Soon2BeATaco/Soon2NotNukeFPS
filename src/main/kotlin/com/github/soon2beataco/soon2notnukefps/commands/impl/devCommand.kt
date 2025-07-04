@@ -6,6 +6,8 @@ import com.github.soon2beataco.soon2notnukefps.utils.APIUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import com.github.soon2beataco.soon2notnukefps.ConfigHolder.configManager
+import com.github.soon2beataco.soon2notnukefps.features.UwUAddonsHider
 
 val devCommand = Commodore("tacodev") {
     literal("testMessage").runs {
@@ -33,4 +35,15 @@ val devCommand = Commodore("tacodev") {
             }
         }
     }
+    literal("configtest").runs {
+        val feature = configManager.getFeature(UwUAddonsHider::class.java)
+        if (feature != null) {
+            feature.enabled = !feature.enabled
+            val state = feature.enabled
+            ChatUtils.modMessage("uwuaddonshider is now $state")
+        } else {
+            ChatUtils.modMessage("Feature UwUAddonsHider not found!")
+        }
+    }
+
 }
