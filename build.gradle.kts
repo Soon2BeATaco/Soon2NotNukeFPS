@@ -84,6 +84,7 @@ val shadowImpl: Configuration by configurations.creating {
 
 dependencies {
     minecraft("com.mojang:minecraft:1.8.9")
+    implementation("com.google.code.gson:gson:2.10.1")
     mappings("de.oceanlabs.mcp:mcp_stable:22-1.8.9")
     forge("net.minecraftforge:forge:1.8.9-11.15.1.2318-1.8.9")
     implementation("com.github.Stivais:Commodore:bea320fe0a")
