@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.github.soon2beataco.soon2notnukefps.ConfigHolder.configManager
 import com.github.soon2beataco.soon2notnukefps.features.UwUAddonsHider
+import com.github.stivais.commodore.utils.GreedyString
 
 val devCommand = Commodore("tacodev") {
     literal("testMessage").runs {
@@ -17,7 +18,7 @@ val devCommand = Commodore("tacodev") {
     literal("testAPI").runs {
         CoroutineScope(Dispatchers.IO).launch { //todo: no more Dispatchers.IO, fix ts
             val response = APIUtils.request("cata?username=Soon2BeAtaco_")
-    
+
             if (response != null) {
                 ChatUtils.modMessage("API returned with : $response")
             } else {
@@ -35,15 +36,32 @@ val devCommand = Commodore("tacodev") {
             }
         }
     }
-    literal("configtest").runs {
+    literal("tm").runs {
         val feature = configManager.getFeature(UwUAddonsHider::class.java)
         if (feature != null) {
             feature.enabled = !feature.enabled
-            val state = feature.enabled
-            ChatUtils.modMessage("uwuaddonshider is now $state")
+            ChatUtils.modMessage("UwUAddonsHider enabled: ${feature.enabled}")
+        } else {
+            ChatUtils.modMessage("Feature UwUAddonsHider not found!")
+        }
+    }
+    literal("tUwUAddons").runs {
+        val feature = configManager.getFeature(UwUAddonsHider::class.java)
+        if (feature != null) {
+            feature.hideUwUAddons = !feature.hideUwUAddons
+            ChatUtils.modMessage("UwU Addons hidden: ${feature.hideUwUAddons}")
         } else {
             ChatUtils.modMessage("Feature UwUAddonsHider not found!")
         }
     }
 
+    literal("tMisc").runs {
+        val feature = configManager.getFeature(UwUAddonsHider::class.java)
+        if (feature != null) {
+            feature.hideMiscMods = !feature.hideMiscMods
+            ChatUtils.modMessage("Misc mods hidden: ${feature.hideMiscMods}")
+        } else {
+            ChatUtils.modMessage("Feature UwUAddonsHider not found!")
+        }
+    }
 }
