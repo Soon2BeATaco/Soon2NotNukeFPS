@@ -8,6 +8,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.github.soon2beataco.soon2notnukefps.ConfigHolder.configManager
 import com.github.soon2beataco.soon2notnukefps.features.UwUAddonsHider
+import com.github.soon2beataco.soon2notnukefps.config.ui.ClickGUI
+import com.github.soon2beataco.soon2notnukefps.soon2notnukefps
+import com.github.soon2beataco.soon2notnukefps.utils.GeneralUtils.mc
 import com.github.stivais.commodore.utils.GreedyString
 
 val devCommand = Commodore("tacodev") {
@@ -63,5 +66,9 @@ val devCommand = Commodore("tacodev") {
         } else {
             ChatUtils.modMessage("Feature UwUAddonsHider not found!")
         }
+    }
+    literal("open").runs {
+        ChatUtils.modMessage("buh", true)
+        soon2notnukefps.screenToOpen = ClickGUI(configManager)
     }
 }

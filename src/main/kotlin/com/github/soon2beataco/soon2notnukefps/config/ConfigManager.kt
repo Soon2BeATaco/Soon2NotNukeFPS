@@ -16,7 +16,7 @@ class ConfigManager(path: File) {
     private val configDir = File(path, "soon2notnukefps")
     private val configFile = File(configDir, "tacosettings.json")
 
-    private val features: List<FeatureConfig> = listOf(
+    val features: List<FeatureConfig> = listOf(
         UwUAddonsHider()
         // add more when more features ig.?? im only testing it with 1 tho so gege
     ).onEach { it.configManager = this }

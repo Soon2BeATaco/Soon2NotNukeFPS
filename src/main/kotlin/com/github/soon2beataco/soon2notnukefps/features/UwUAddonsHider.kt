@@ -2,15 +2,18 @@ package com.github.soon2beataco.soon2notnukefps.features
 
 import com.google.gson.JsonObject
 import com.github.soon2beataco.soon2notnukefps.config.ConfigManager
+import com.github.soon2beataco.soon2notnukefps.config.ui.ToggleableFeature
 import net.minecraftforge.client.event.ClientChatReceivedEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import java.util.regex.Pattern
 
-class UwUAddonsHider : FeatureConfig {
+class UwUAddonsHider : ToggleableFeature {
     override val name = "UwUAddonsHider"
+    override val category = "Chat"
+    override val description = "Hides UwUAddons chat spam and miscellaneous other spammy chat mods/messages."
     override var configManager: ConfigManager? = null
 
-    var enabled = true
+    override var enabled = false
         set(value) {
             field = value
             configManager?.markDirty()

@@ -5,6 +5,8 @@ import com.google.gson.JsonObject
 
 interface FeatureConfig {
     val name: String
+    val category: String
+    val description: String
     var configManager: ConfigManager?
     fun load(json: JsonObject)
     fun toJson(): JsonObject
