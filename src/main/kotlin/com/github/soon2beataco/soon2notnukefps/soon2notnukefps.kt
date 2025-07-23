@@ -1,17 +1,16 @@
 package com.github.soon2beataco.soon2notnukefps
 
-import net.minecraft.client.Minecraft
+import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
-import net.minecraft.client.renderer.GlStateManager
 import com.github.soon2beataco.soon2notnukefps.commands.CommandManager
-import com.github.soon2beataco.soon2notnukefps.ConfigHolder
 
 @Mod(modid = "soonnotnukefps", useMetadata = true)
-class soon2notnukefps {
+public class soon2notnukefps {
     @Mod.EventHandler
-    fun init(event: FMLInitializationEvent) {
+    public fun init(event: FMLInitializationEvent?) {
+        MinecraftForge.EVENT_BUS.register(this)
         CommandManager.register()
-        ConfigHolder.initConfig()
     }
 }
+
